@@ -28,7 +28,7 @@ This project demonstrates real-world cloud provisioning skills suitable for DevO
              |   |   10.0.0.0/16     |   |
              |   |                   |   |
              |   |  +-------------+  |   |
- Internet <--+---+-->|   Subnet   |--+---+
+     Internet <--+---+-->|   Subnet   |--+---+
              |   |  | 10.0.1.0/24 |  |   |
              |   |  +-------------+  |   |
              |   |        |           |   |
