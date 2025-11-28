@@ -42,7 +42,7 @@ This project demonstrates real-world cloud provisioning skills suitable for DevO
 
 terraform-aws-infrastructure
 │
-├── terraform/
+├── terraform
 │   ├── main.tf
 │   ├── provider.tf
 │   ├── variables.tf
