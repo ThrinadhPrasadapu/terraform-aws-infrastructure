@@ -1,3 +1,7 @@
+############################################
+# Terraform AWS Infrastructure Project
+############################################
+
 # ---------------------------
 # VPC
 # ---------------------------
@@ -52,5 +56,68 @@ resource "aws_route_table" "public_rt" {
 }
 
 resource "aws_route_table_association" "public_rt_assoc" {
-  sub
+  subnet_id      = aws_subnet.public_subnet.id
+  route_table_id = aws_route_table.public_rt.id
+}
 
+# ---------------------------
+# Security Group
+# ---------------------------
+resource "aws_security_group" "ec2_sg" {
+  name        = "ec2-security-group"
+  description = "Allow SSH and Application Traffic"
+  vpc_id      = aws_vpc.main_vpc.id
+
+  # SSH
+  ingress {
+    description = "SSH"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # App port
+  ingress {
+    description = "App Port"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Allow all outbound traffic
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "ec2-sg"
+  }
+}
+
+# ---------------------------
+# EC2 Instance
+# ---------------------------
+resource "aws_instance" "ec2" {
+  ami                    = var.ami_id
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.public_subnet.id
+  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
+  key_name               = aws_key_pair.keypair.key_name
+
+  tags = {
+    Name = "terraform-ec2-instance"
+  }
+}
+
+# ---------------------------
+# Key Pair
+# ---------------------------
+resource "aws_key_pair" "keypair" {
+  key_name   = "terraform-key"
+  public_key = file(var.public_key_path)
+}
