@@ -125,7 +125,9 @@ Subnet ID
 Example:
 
 ec2_public_ip = "65.2.xxx.xxx"
+
 vpc_id        = "vpc-0a12345bcd"
+
 subnet_id     = "subnet-05abc123"
 
 
