@@ -39,15 +39,14 @@ This project demonstrates real-world cloud provisioning skills suitable for DevO
              +---------------------------+
              
 📁 Project Structure
-
 terraform-aws-infrastructure
 │
-├── terraform
-│   ├── main.tf
-│   ├── provider.tf
-│   ├── variables.tf
-│   ├── outputs.tf
-│   └── .keep
+├── terraform/
+│   ├── main.tf/
+│   ├── provider.tf/
+│   ├── variables.tf/
+│   ├── outputs.tf/
+│   └── .keep/
 │
 └── README.md
 
