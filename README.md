@@ -19,6 +19,7 @@ Key Pair
 This project demonstrates real-world cloud provisioning skills suitable for DevOps & Cloud Engineer roles.
 
 🚀 Architecture Overview
+
              +---------------------------+
              |        AWS Cloud          |
              |                           |
@@ -36,6 +37,7 @@ This project demonstrates real-world cloud provisioning skills suitable for DevO
              |   |   +---------+      |   |
              |   +-------------------+   |
              +---------------------------+
+             
 📁 Project Structure
 
 terraform-aws-infrastructure/
